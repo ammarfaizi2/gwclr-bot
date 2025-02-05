@@ -11,6 +11,9 @@ if (!is_dir(STORAGE_PATH)) {
 		throw new Exception("Failed to create storage directory at " . STORAGE_PATH);
 }
 
+date_default_timezone_set("Asia/Jakarta");
+
+printf("Start: %s\n", date("r"));
 $CURL = curl_init();
 
 class Exe
@@ -80,7 +83,7 @@ function __english_day()
 	$chat = Exe::getChat(["chat_id" => CHAT_ID_ENGLISH_DAY]);
 	$t = $chat["result"]["title"];
 
-	if (00 && $day != "7") {
+	if ($day != "7") {
 		printf("english_day: Today is not Sunday.\n");
 
 		// Check whether the group name contains "English Day".
@@ -204,3 +207,4 @@ function reminder_2030()
 
 english_day();
 reminder_2030();
+printf("End: %s\n", date("r"));
